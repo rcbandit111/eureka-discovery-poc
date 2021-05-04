@@ -1,0 +1,36 @@
+logging:
+    file:
+        name: ${java.io.tmpdir}/application.log
+    level:
+        com:
+            backend: DEBUG
+        org:
+            springframework: DEBUG
+            springframework.web: DEBUG
+server:
+    port: 8020
+    servlet:
+        context-path: /engine
+spring:
+    application:
+        name: skyshop-mail-service
+    jmx:
+        enabled: false
+info:
+    build:
+        version: 1.0
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+        fetchRegistry: true
+        healthcheck:
+            enabled: true
+        lease:
+            duration: 5
+        registerWithEureka: true
+    instance:
+        hostname: localhost
+        preferIpAddress: true
+        metadataMap:
+            instanceId: ${spring.application.name}:${server.port}
